@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Header at the top */
+header {
+  width: 100%;
+  background-color: #155594;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid #000;
+  z-index: 100;
+}
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 10px;
+  width: 100%;
+  max-width: 520px;
+  padding-top: 15px;
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 1;
+  background-image: url(https://vscodeedu.com/cover.png);
+  background-size: contain;
+  border: 2px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  height: 125px;
+  background-color: #fff;
+  font-size: 24px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+/* Main content */
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 10px;
+  width: 100%;
+  max-width: 520px;
+  padding-top: 15px;
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 1;
+  background-image: url(https://vscodeedu.com/cover.png);
+  background-size: contain;
+  border: 2px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  height: 125px;
+  background-color: #fff;
+  font-size: 24px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+p {
+  text-align: center;
+}
+
+p a {
+  color: white;
+  text-decoration: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent shaking caused by vertical scrollbars */
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1em;
+  font-style: italic;
+}
+
+#congratulations {
+  display: none;
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 20px;
+  color: #2c7d2f;
+  font-weight: bold;
+}
+
+/* Confetti container covering the entire screen */
+#confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden; /* Prevent elements from spilling */
+}
+
+/* Confetti pieces */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: fall 2s linear forwards;
+  box-sizing: content-box; /* Ensure padding doesn't interfere with size */
+}
+
+/* Override different shapes and sizes */
+.confetti.small {
+  width: 6px;
+  height: 6px;
+}
+.confetti.medium {
+  width: 12px;
+  height: 12px;
+}
+.confetti.large {
+  width: 16px;
+  height: 16px;
+}
+.confetti.circle {
+  border-radius: 50%;
+}
+
+/* Falling animation */
+@keyframes fall {
+  0% {
+    transform: translateY(-20vh) rotate(0deg); /* Start well above the screen */
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) rotate(15deg); /* Swing downwards */
+  }
+  75% {
+    transform: translateY(75vh) rotate(-15deg); /* Another swing */
+  }
+  100% {
+    transform: translateY(100vh) rotate(0deg); /* Fall off-screen */
+    opacity: 0;
+  }
+}
+
+/* Play Again button */
+#play-again {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #0b8bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1000;
+  display: none;
+}
+
+#play-again:hover {
+  background-color: #007bff;
+}
+.card.flipped {
+  transform: rotateY(180deg);
+  background-image: unset;
+}
+
+.card.flipped img {
+  display: block;
+}
+.matched {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
